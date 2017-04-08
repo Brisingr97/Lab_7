@@ -1,0 +1,24 @@
+how do you handle register file and memory: 
+a memory box has to be accessed as a global variable?
+consider a black box and this has to take in input as 4 bit addresses and puts out the data.
+the given files (types) are to be used as hints and not a hard design.
+the memory where you are going ot use has internal registers where the data is to be stored, the name of that is " signal address register": now, there is a read enable here which can be omitted which is usually "on". you are not to consider that complexity.
+the mem provided is a block ram and is only defined in behaviour here.
+
+
+{control fsm}<->{actions (ALU adn stuff)}<-/bus\->{memory}
+
+while read_in and writing via a bus, we will lose a cycle(we need to do the PC+4 and data_out read concurrently)
+i.e fetch_1 => address <= PC and fetch 2 => IR <= data_in .... fir this we need a mux and...
+the implementation of this inside of actions will be NOT IN A PROCESS; reason^.
+
+components which should stand out :::::
+1) Multiplier
+2) Shifter
+3) Decoder
+4) ALU
+5) RF
+6) Memory
+
+.) Control FSM
+.) Action
